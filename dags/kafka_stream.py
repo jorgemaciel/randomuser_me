@@ -23,7 +23,7 @@ def get_data():
 def format_data(res):
     data = {}
     location = res['location']
-    #data['id'] = uuid.uuid4()
+    data['id'] = res['login']['uuid']
     data['first_name'] = res['name']['first']
     data['last_name'] = res['name']['last']
     data['gender'] = res['gender']
@@ -60,6 +60,7 @@ def stream_data():
         except Exception as e:
             logging.error(f'An error occured: {e}')
             continue
+
 
 with DAG('user_automation',
          default_args=default_args,
